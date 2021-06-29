@@ -23,7 +23,7 @@ class ExchangeRateController extends AbstractController
             $date = 'today/';
 
         try {
-            $exchangeRateService->getExchangeRate($currencyCode, $date);
+            $exchangeRateService->getExchangeRate($currencyCode, $date, $this->getDoctrine()->getManager());
         } catch (Exception $e) {
         }
 

@@ -3,7 +3,6 @@
 namespace App\Entity;
 
 use App\Repository\ExchangeRateRepository;
-use DateTimeInterface;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -34,9 +33,9 @@ class ExchangeRate
     private float $rate;
 
     /**
-     * @ORM\Column(type="date")
+     * @ORM\Column(type="string")
      */
-    private ?DateTimeInterface $date;
+    private string $date;
 
     /**
      * @return int|null
@@ -104,18 +103,18 @@ class ExchangeRate
     }
 
     /**
-     * @return DateTimeInterface|null
+     * @return string|null
      */
-    public function getDate(): ?DateTimeInterface
+    public function getDate(): ?string
     {
         return $this->date;
     }
 
     /**
-     * @param DateTimeInterface $date
+     * @param string $date
      * @return $this
      */
-    public function setDate(DateTimeInterface $date): self
+    public function setDate(string $date): self
     {
         $this->date = $date;
 
