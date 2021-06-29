@@ -6,8 +6,18 @@ namespace App\Serializer;
 
 use App\Entity\ExchangeRate;
 
+/**
+ * Class ExchangeRateSerializer
+ * @package App\Serializer
+ */
 class ExchangeRateSerializer
 {
+    /**
+     * Method returns object represented by json
+     *
+     * @param ExchangeRate $exchangeRate
+     * @return string
+     */
     public function serialize(ExchangeRate $exchangeRate): string
     {
         $exchangeRateArray = [

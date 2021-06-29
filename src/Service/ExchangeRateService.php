@@ -17,14 +17,25 @@ use Symfony\Contracts\HttpClient\Exception\ServerExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 
+/**
+ * Class ExchangeRateService
+ * @package App\Service
+ */
 class ExchangeRateService
 {
     private const HTTP_GET = 'GET';
     private const NBP_API_URL = 'https://api.nbp.pl/api/exchangerates/rates/a/';
-    private const PARAMS = ['query' => ['format' => 'json']];
+    private const QUERY_PARAMS = ['query' => ['format' => 'json']];
     private const CURRENCY_CODE_LENGTH = 3;
     private const DEFAULT_DATE_PARAM = 'today/';
 
+    /**
+     * ExchangeRateService constructor.
+     *
+     * @param HttpClientInterface $client
+     * @param ExchangeRateRepository $exchangeRateRepository
+     * @param ExchangeRateSerializer $exchangeRateSerializer
+     */
     public function __construct(private HttpClientInterface $client,
                                 private ExchangeRateRepository $exchangeRateRepository,
                                 private ExchangeRateSerializer $exchangeRateSerializer)
@@ -110,7 +121,7 @@ class ExchangeRateService
             $response = $this->client->request(
                 self::HTTP_GET,
                 $exchangeRateApiUrl,
-                self::PARAMS
+                self::QUERY_PARAMS
             );
 
             return new NBPRateExchangeModel(json_decode($response->getContent()));
