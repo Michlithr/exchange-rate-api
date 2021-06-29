@@ -20,7 +20,7 @@ use Symfony\Contracts\HttpClient\HttpClientInterface;
 class ExchangeRateService
 {
     private const HTTP_GET = 'GET';
-    private const NBP_API_URL = 'http://api.nbp.pl/api/exchangerates/rates/a/';
+    private const NBP_API_URL = 'https://api.nbp.pl/api/exchangerates/rates/a/';
     private const PARAMS = ['query' => ['format' => 'json']];
     private const CURRENCY_CODE_LENGTH = 3;
     private const DEFAULT_DATE_PARAM = 'today/';
