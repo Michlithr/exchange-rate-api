@@ -18,18 +18,28 @@ class ExchangeRateController extends AbstractController
         $currencyCode = $request->query->get('currencyCode');
         if (!$currencyCode)
             $currencyCode = 'EUR';
-        $date = $request->query->get('$date');
+        $date = $request->query->get('date');
         if (!$date)
             $date = 'today/';
 
         try {
-            $exchangeRateService->getExchangeRate($currencyCode, $date, $this->getDoctrine()->getManager());
+            return new Response($exchangeRateService->getExchangeRate($currencyCode, $date, $this->getDoctrine()->getManager()));
         } catch (Exception $e) {
+            return new Response($e->getMessage());
         }
+    }
 
-        return $this->json([
-            'message' => 'Welcome to your new controller!',
-            'path' => 'src/Controller/ExchangeRateController.php',
-        ]);
+    #[Route('/exchangeRate/historical', name: 'exchange_rates', methods: 'GET')]
+    public function getExchangeRates(Request $request, ExchangeRateService $exchangeRateService): Response
+    {
+        $currencyCode = $request->query->get('currencyCode');
+        if (!$currencyCode)
+            $currencyCode = 'EUR';
+
+        try {
+            return new Response($exchangeRateService->getExchangeRates($currencyCode));
+        } catch (Exception $e) {
+            return new Response($e->getMessage());
+        }
     }
 }
