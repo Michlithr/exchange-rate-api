@@ -22,6 +22,12 @@ In .env file you need to determine credentials for your db instance. E.g. for my
 ### Installing libraries
 By running ```composer install``` in terminal (in project directory) you should be able to installing all needed frameworks and libraries. 
 
+### Preparing db
+To use app you have to prepare db. It can be simply done by using doctring. You have to run:
+- ```php bin/console doctrine:database:create``` it creates db based on DATABASE_URL specified in .env file
+- ```php bin/console make:migration``` it prepares queries for your db based on annotations in Entity classes
+- ```php bin/console doctrine:migrations:migrate``` this command executes all migration files that have not already been run against your database
+
 ### Running the app
 The simply way to run this project is to e.g. using apache symfony pack to run it locally. You need to run ```composer require symfony/apache-pack``` in project directory. Other possible ways are described here - https://symfony.com/doc/current/setup/web_server_configuration.html. After configuring the way of deploying this project you run this App by writing ```symfony server:start``` in terminal (in project directory). It will start server on localhost:8000
 
