@@ -19,9 +19,11 @@ In .env file you need to determine credentials for your db instance. E.g. for my
 - db-name - name of your database like ex-rate-db
 - example - ```DATABASE_URL="mysql://admin123:Str00ngPass@127.0.0.1:3306/ex-rate-db"```
 
-### By running ```composer install``` in terminal (in project directory) you should be able to installing all needed frameworks and libraries. 
+### Installing libraries
+By running ```composer install``` in terminal (in project directory) you should be able to installing all needed frameworks and libraries. 
 
-### The simply way to run this project is to e.g. using apache symfony pack to run it locally. You need to run ```composer require symfony/apache-pack``` in project directory. Other possible ways are described here - https://symfony.com/doc/current/setup/web_server_configuration.html. After configuring the way of deploying this project you run this App by writing ```symfony server:start``` in terminal (in project directory). It will start server on localhost:8000
+### Running the app
+The simply way to run this project is to e.g. using apache symfony pack to run it locally. You need to run ```composer require symfony/apache-pack``` in project directory. Other possible ways are described here - https://symfony.com/doc/current/setup/web_server_configuration.html. After configuring the way of deploying this project you run this App by writing ```symfony server:start``` in terminal (in project directory). It will start server on localhost:8000
 
 ## How to use
 App contains two endpoints: 
